@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsbmlfvng4yvd"]
+
+[ext_resource type="PackedScene" uid="uid://b12wblksq54so" path="res://enemy/spinner.tscn" id="1_dxppu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t34gm"]
+size = Vector2(8, 8)
+
+[node name="TestWorld" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(64, 56)
+scale = Vector2(1, 12)
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(0.0768358, 0.0768358, 0.0768358, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_t34gm")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(240, 56)
+scale = Vector2(1, 12)
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D2"]
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(0.0768358, 0.0768358, 0.0768358, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_t34gm")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(64, 56)
+rotation = -1.5708
+scale = Vector2(1.08208, 23.0452)
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3"]
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(0.0768358, 0.0768358, 0.0768358, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_t34gm")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(64, 160)
+rotation = -1.5708
+scale = Vector2(1.08208, 23.0452)
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D4"]
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(0.0768358, 0.0768358, 0.0768358, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_t34gm")
+
+[node name="Spinner" parent="." instance=ExtResource("1_dxppu")]
+position = Vector2(176, 120)
+
+[node name="Spinner2" parent="." instance=ExtResource("1_dxppu")]
+position = Vector2(200, 104)
+
+[node name="Spinner3" parent="." instance=ExtResource("1_dxppu")]
+position = Vector2(112, 104)
+
+[node name="Spinner4" parent="." instance=ExtResource("1_dxppu")]
+position = Vector2(136, 128)
+
+[node name="Spinner5" parent="." instance=ExtResource("1_dxppu")]
+position = Vector2(152, 88)
+
+[node name="Spinner6" parent="." instance=ExtResource("1_dxppu")]
+position = Vector2(216, 128)

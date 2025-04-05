@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8r7vo1doj48k"]
+
+[ext_resource type="PackedScene" uid="uid://bjm20jguw5d6u" path="res://world/inner_world.tscn" id="1_6xmxd"]
+
+[node name="World" type="SubViewportContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+canvas_item_default_texture_filter = 3
+size = Vector2i(160, 180)
+render_target_update_mode = 4
+
+[node name="InnerWorld" parent="SubViewport" instance=ExtResource("1_6xmxd")]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7bqonr751mfh"]
+
+[ext_resource type="PackedScene" uid="uid://b8r7vo1doj48k" path="res://world/world.tscn" id="1_80nbo"]
+
+[node name="Game" type="Node2D"]
+
+[node name="World" parent="." instance=ExtResource("1_80nbo")]
+
+[node name="World2" parent="." instance=ExtResource("1_80nbo")]
+offset_left = 160.0
+offset_right = 320.0
+offset_bottom = 180.0
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(160, 0, 160, 184)
