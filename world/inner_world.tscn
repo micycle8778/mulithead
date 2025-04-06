@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bjm20jguw5d6u"]
+[gd_scene load_steps=13 format=3 uid="uid://bjm20jguw5d6u"]
 
 [ext_resource type="Shader" uid="uid://rr8u5n104mcf" path="res://world/stars.gdshader" id="1_idfuc"]
 [ext_resource type="Script" uid="uid://bvpaho2qnbks1" path="res://world/inner_world.gd" id="1_ma31t"]
 [ext_resource type="PackedScene" uid="uid://sodn8qieyol" path="res://player/player.tscn" id="2_hs4x8"]
 [ext_resource type="Script" uid="uid://db0bk2u5px1uq" path="res://world/main_cam.gd" id="3_ma31t"]
+[ext_resource type="PackedScene" uid="uid://btt72eflld1co" path="res://enemy/worm/worm.tscn" id="5_ma31t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tcf2h"]
 shader = ExtResource("1_idfuc")
@@ -82,3 +83,12 @@ shape = SubResource("WorldBoundaryShape2D_ma31t")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(220, 0)
 shape = SubResource("WorldBoundaryShape2D_vhekp")
+
+[node name="Worm" parent="." instance=ExtResource("5_ma31t")]
+position = Vector2(-81, -119)
+
+[node name="Worm2" parent="." instance=ExtResource("5_ma31t")]
+position = Vector2(146, -90)
+
+[node name="Worm3" parent="." instance=ExtResource("5_ma31t")]
+position = Vector2(-65, 88)

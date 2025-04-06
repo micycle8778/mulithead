@@ -5,6 +5,7 @@ var clock := 0.
 
 func equipped() -> void:
 	Game.instance.ammo = 50
+	Game.instance.ammo_icon.texture = PL.shotgun_weapon_texture
 
 func fire_released() -> void:
 	return

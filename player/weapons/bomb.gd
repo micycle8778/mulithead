@@ -1,21 +1,20 @@
 extends Node2D
 
-const fire_wait := 0.1
+const fire_wait := 1.
 var clock := 0.
 
 func equipped() -> void:
-	Game.instance.ammo = 100
-	Game.instance.ammo_icon.texture = PL.basic_weapon_texture
+	Game.instance.ammo = 20
+	Game.instance.ammo_icon.texture = PL.bomb_weapon_texture
 
 func fire_released() -> void:
 	return
 
 func fire_pressed(parent: Node, dir: Vector2) -> void:
-	print("fire_pressed")
 	if clock > 0.: return
 	if Game.instance.ammo <= 0: return
 
-	var bullet := PL.basic_bullet.instantiate()
+	var bullet := PL.bomb.instantiate()
 	bullet.dir = dir
 	bullet.rotation = dir.angle()
 	parent.add_child(bullet)

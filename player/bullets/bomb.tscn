@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://blovy1gu5r53f"]
+
+[ext_resource type="Script" uid="uid://bny3hbaadt5hi" path="res://player/bullets/bomb.gd" id="1_runef"]
+
+[sub_resource type="Gradient" id="Gradient_g6n1n"]
+offsets = PackedFloat32Array(0.427046, 0.697509)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g6n1n"]
+radius = 4.0
+
+[node name="Bomb" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_runef")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+scale = Vector2(1.49994, 1.49994)
+color = Color(0.0949999, 0, 0.57, 1)
+polygon = PackedVector2Array(4, 0, 3, -3, 0, -4, -3, -3, -4, 0, -3, 3, 0, 4, 3, 3)
+
+[node name="Line2D" type="Line2D" parent="."]
+scale = Vector2(1.49994, 1.49994)
+points = PackedVector2Array(0, -4, 3, -3, 4, 0, 3, 3, 0, 4, -3, 3, -4, 0, -3, -3, 0, -4)
+width = 1.0
+default_color = Color(0.0666666, 0, 1, 1)
+joint_mode = 2
+begin_cap_mode = 2
+
+[node name="Node" type="Node" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Node"]
+amount = 3
+lifetime = 0.5
+direction = Vector2(1, -1)
+spread = 15.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 36.59
+initial_velocity_max = 36.59
+color = Color(0.324, 0.324, 0.54, 1)
+color_ramp = SubResource("Gradient_g6n1n")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../Node/CPUParticles2D")
+update_rotation = false
+update_scale = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.49994, 1.49994)
+shape = SubResource("CircleShape2D_g6n1n")

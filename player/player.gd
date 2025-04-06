@@ -8,7 +8,7 @@ var speed_mul := 1.
 @onready var aim_hint: Line2D = %AimHint
 
 var _weapon_node: Node
-@onready var current_weapon := "Shotgun":
+@onready var current_weapon := "Bomb":
 	set(v):
 		current_weapon = v
 		if (not is_node_ready()): return
@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 	rotation = v.angle()
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:
-	# TODO: hurt player
+	# TODO: detect player death
 	Game.instance.health -= 10
 	MainCam.shake(.2)
 	body.queue_free()
