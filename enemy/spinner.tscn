@@ -1,17 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://b12wblksq54so"]
 
 [ext_resource type="Script" uid="uid://ilkitotdg8qm" path="res://enemy/spinner.gd" id="1_vm4pq"]
-[ext_resource type="PackedScene" uid="uid://bu8j5odwugj3n" path="res://enemy/hurt_box.tscn" id="2_7w66s"]
+[ext_resource type="PackedScene" uid="uid://bu8j5odwugj3n" path="res://enemy/util/hurt_box.tscn" id="2_7w66s"]
+[ext_resource type="PackedScene" uid="uid://d4iu0k0kb34ao" path="res://enemy/util/death_particles.tscn" id="3_3gh8s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vm4pq"]
 radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3gh8s"]
 radius = 7.0
-
-[sub_resource type="Gradient" id="Gradient_7w66s"]
-offsets = PackedFloat32Array(0.415094, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Spinner" type="CharacterBody2D"]
 collision_layer = 4
@@ -37,21 +34,7 @@ shape = SubResource("CircleShape2D_vm4pq")
 shape = SubResource("CircleShape2D_3gh8s")
 debug_color = Color(0.999677, 0, 0.105055, 0.42)
 
-[node name="DeathParticles" type="CPUParticles2D" parent="."]
+[node name="DeathParticles" parent="." instance=ExtResource("3_3gh8s")]
 unique_name_in_owner = true
-emitting = false
-lifetime = 0.4
-one_shot = true
-explosiveness = 1.0
-emission_shape = 1
-emission_sphere_radius = 3.0
-spread = 60.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 75.0
-initial_velocity_max = 100.0
-damping_min = 100.0
-damping_max = 100.0
-color = Color(1, 0, 0, 1)
-color_ramp = SubResource("Gradient_7w66s")
 
 [connection signal="hit" from="HurtBox" to="." method="_on_hurt_box_hit"]

@@ -3,7 +3,7 @@ extends CharacterBody2D
 const rpm := 2
 const speed := 75
 
-@onready var death_particles: CPUParticles2D = %DeathParticles
+@onready var death_particles: DeathParticles = %DeathParticles
 @onready var polygon: Polygon2D = %Polygon2D
 
 func _ready() -> void:
@@ -28,12 +28,5 @@ func _process(delta: float) -> void:
 		velocity = v - (d * normal * 2)
 
 func _on_hurt_box_hit(dir: Vector2) -> void:
-	remove_child(death_particles)
-	get_parent().add_child(death_particles)
-
-	death_particles.global_position = global_position
-	death_particles.rotation = dir.angle()
-	death_particles.finished.connect(death_particles.queue_free)
-	death_particles.emitting = true
-
+	death_particles.emit(get_parent(), dir)
 	queue_free()

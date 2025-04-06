@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bjm20jguw5d6u"]
+[gd_scene load_steps=14 format=3 uid="uid://bjm20jguw5d6u"]
 
 [ext_resource type="Shader" uid="uid://rr8u5n104mcf" path="res://world/stars.gdshader" id="1_idfuc"]
+[ext_resource type="Script" uid="uid://bvpaho2qnbks1" path="res://world/inner_world.gd" id="1_ma31t"]
 [ext_resource type="PackedScene" uid="uid://sodn8qieyol" path="res://player/player.tscn" id="2_hs4x8"]
 [ext_resource type="Script" uid="uid://db0bk2u5px1uq" path="res://world/main_cam.gd" id="3_ma31t"]
 [ext_resource type="PackedScene" uid="uid://b12wblksq54so" path="res://enemy/spinner.tscn" id="4_hs4x8"]
+[ext_resource type="PackedScene" uid="uid://j5fn0sdan8f0" path="res://enemy/dodger.tscn" id="4_vhekp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tcf2h"]
 shader = ExtResource("1_idfuc")
@@ -30,7 +32,9 @@ distance = 28.0
 normal = Vector2(-1, 0)
 distance = 28.0
 
-[node name="InnerWorld" type="Node2D"]
+[node name="InnerWorld" type="Node2D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_ma31t")
+player = NodePath("Player")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_tcf2h")
@@ -95,3 +99,15 @@ position = Vector2(-100, 19)
 
 [node name="Spinner5" parent="." instance=ExtResource("4_hs4x8")]
 position = Vector2(94, 60)
+
+[node name="Dodger" parent="." instance=ExtResource("4_vhekp")]
+position = Vector2(112, -87)
+
+[node name="Dodger2" parent="." instance=ExtResource("4_vhekp")]
+position = Vector2(7, -78)
+
+[node name="Dodger3" parent="." instance=ExtResource("4_vhekp")]
+position = Vector2(-180, -92)
+
+[node name="Dodger4" parent="." instance=ExtResource("4_vhekp")]
+position = Vector2(-101, -43)

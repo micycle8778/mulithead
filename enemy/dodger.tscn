@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://j5fn0sdan8f0"]
+
+[ext_resource type="PackedScene" uid="uid://d4iu0k0kb34ao" path="res://enemy/util/death_particles.tscn" id="1_06oxu"]
+[ext_resource type="Script" uid="uid://ckh7cvhhpdk3u" path="res://enemy/dodger.gd" id="1_46ihw"]
+[ext_resource type="PackedScene" uid="uid://bu8j5odwugj3n" path="res://enemy/util/hurt_box.tscn" id="3_g781l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5xx7f"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_emnjf"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g781l"]
+radius = 24.0
+
+[node name="Dodger" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_46ihw")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0, 0.607843, 0, 1)
+polygon = PackedVector2Array(-3, -6, -3, 6, 3, 6, 6, 0, 3, -6)
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(-3, -6, -3, 6, 3, 6, 6, 0, 3, -6, -3, -6)
+width = 1.5
+default_color = Color(0, 1, 0, 1)
+begin_cap_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5xx7f")
+
+[node name="DeathParticles" parent="." instance=ExtResource("1_06oxu")]
+unique_name_in_owner = true
+rotation = -3.14159
+color = Color(0, 1, 0, 1)
+
+[node name="HurtBox" parent="." instance=ExtResource("3_g781l")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_emnjf")
+debug_color = Color(0.994851, 0, 0.215299, 0.42)
+
+[node name="BulletDetector" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletDetector"]
+shape = SubResource("CircleShape2D_g781l")
+
+[connection signal="hit" from="HurtBox" to="." method="_on_hurt_box_hit"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4iu0k0kb34ao"]
+
+[ext_resource type="Script" uid="uid://dcm8p1tflrdym" path="res://enemy/util/death_particles.gd" id="1_tk0t8"]
+
+[sub_resource type="Gradient" id="Gradient_7w66s"]
+offsets = PackedFloat32Array(0.415094, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="DeathParticles" type="CPUParticles2D"]
+emitting = false
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 3.0
+spread = 60.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 75.0
+initial_velocity_max = 100.0
+damping_min = 100.0
+damping_max = 100.0
+color = Color(1, 0, 0, 1)
+color_ramp = SubResource("Gradient_7w66s")
+script = ExtResource("1_tk0t8")
