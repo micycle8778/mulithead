@@ -5,10 +5,10 @@ const MAX_SPEED = 130
 const ACCEL = 1125
 
 var speed_mul := 1.
-@onready var aim_hint: Line2D = %AimHint
+@onready var aim_hint: Node2D = %AimHint
 
 var _weapon_node: Node
-@onready var current_weapon := "Hyperbeam":
+@onready var current_weapon := "Basic":
 	set(v):
 		current_weapon = v
 		if (not is_node_ready()): return
@@ -23,8 +23,8 @@ func _process(delta: float) -> void:
 	var aim = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
 	aim = aim.normalized()
 
-	# aim_hint.visible = not aim.is_zero_approx()
-	# aim_hint.global_rotation = aim.angle()
+	aim_hint.visible = not aim.is_zero_approx() and current_weapon == "Hyperbeam"
+	aim_hint.global_rotation = aim.angle()
 
 	if _weapon_node == null: return
 	if aim.is_zero_approx():
@@ -49,6 +49,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:
 	# TODO: detect player death
-	Game.instance.health -= 10
-	MainCam.shake(.2)
+	Game.instance.health -= 3
+	MainCam.shake(.4)
 	body.queue_free()

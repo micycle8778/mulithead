@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://sodn8qieyol"]
+[gd_scene load_steps=14 format=3 uid="uid://sodn8qieyol"]
 
 [ext_resource type="Script" uid="uid://dg15tf8evg8ba" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://25k8mcij1du1" path="res://player/player.png" id="2_rkbax"]
@@ -9,6 +9,16 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rkbax"]
 radius = 7.0
+
+[sub_resource type="Gradient" id="Gradient_g6k8r"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.588972)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_boad6"]
+gradient = SubResource("Gradient_g6k8r")
+width = 4
+height = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1dw6"]
 size = Vector2(10, 6)
@@ -41,9 +51,11 @@ shape = SubResource("CircleShape2D_rkbax")
 
 [node name="AimHint" type="Line2D" parent="."]
 unique_name_in_owner = true
-visible = false
-points = PackedVector2Array(16, -8, 24, 0, 16, 8)
-width = 3.0
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 258, 0)
+width = 2.0
+texture = SubResource("GradientTexture2D_boad6")
+texture_mode = 1
 
 [node name="SubViewport" type="SubViewport" parent="."]
 

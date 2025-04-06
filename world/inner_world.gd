@@ -17,3 +17,16 @@ static func has_prio(node: Node) -> bool:
 func _init() -> void:
 	instances = instances.filter(is_instance_valid)
 	instances.push_back(self)
+
+func _ready() -> void:
+	%PickupSpawnTimer.wait_time = randf_range(9., 12.)
+	%PickupSpawnTimer.start()
+
+func _on_pickup_spawn_timer_timeout() -> void:
+	var pickup := PL.ammo_pickup.instantiate()
+	pickup.position = Vector2(
+		randf_range(-128, 128),
+		randf_range(-128, 128)
+	)
+
+	add_child(pickup)

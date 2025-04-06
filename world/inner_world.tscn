@@ -1,10 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://bjm20jguw5d6u"]
+[gd_scene load_steps=28 format=3 uid="uid://bjm20jguw5d6u"]
 
 [ext_resource type="Shader" uid="uid://rr8u5n104mcf" path="res://world/stars.gdshader" id="1_idfuc"]
 [ext_resource type="Script" uid="uid://bvpaho2qnbks1" path="res://world/inner_world.gd" id="1_ma31t"]
 [ext_resource type="PackedScene" uid="uid://sodn8qieyol" path="res://player/player.tscn" id="2_hs4x8"]
 [ext_resource type="Script" uid="uid://db0bk2u5px1uq" path="res://world/main_cam.gd" id="3_ma31t"]
-[ext_resource type="PackedScene" uid="uid://btt72eflld1co" path="res://enemy/worm/worm.tscn" id="5_ma31t"]
+[ext_resource type="Script" uid="uid://dlh8s7afts2qs" path="res://world/wave.gd" id="6_oaw5j"]
+[ext_resource type="Script" uid="uid://dtt1mgd5q0mov" path="res://world/enemy_spawner.gd" id="6_vhekp"]
+[ext_resource type="Script" uid="uid://bdus2i53gwxdn" path="res://world/enemy_spawn.gd" id="7_sjveu"]
+[ext_resource type="PackedScene" uid="uid://b12wblksq54so" path="res://enemy/spinner.tscn" id="8_4fk73"]
+[ext_resource type="PackedScene" uid="uid://j5fn0sdan8f0" path="res://enemy/dodger.tscn" id="9_jmnlq"]
+[ext_resource type="PackedScene" uid="uid://btt72eflld1co" path="res://enemy/worm/worm.tscn" id="10_nsv1c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tcf2h"]
 shader = ExtResource("1_idfuc")
@@ -30,6 +35,72 @@ distance = 28.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vhekp"]
 normal = Vector2(-1, 0)
 distance = 28.0
+
+[sub_resource type="Curve2D" id="Curve2D_vlgln"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -175, -175, 0, 0, 0, 0, 174, -173, 0, 0, 0, 0, 174, 176, 0, 0, 0, 0, -171, 174, 0, 0, 0, 0, -175, -174)
+}
+point_count = 5
+
+[sub_resource type="Resource" id="Resource_klmwp"]
+script = ExtResource("7_sjveu")
+weight = 1.0
+scene = ExtResource("8_4fk73")
+metadata/_custom_type_script = "uid://bdus2i53gwxdn"
+
+[sub_resource type="Resource" id="Resource_ny6tk"]
+script = ExtResource("6_oaw5j")
+enemies = Array[ExtResource("7_sjveu")]([SubResource("Resource_klmwp")])
+duration = 30.0
+spawn_count = 40.0
+wait_time = 30.0
+metadata/_custom_type_script = "uid://dlh8s7afts2qs"
+
+[sub_resource type="Resource" id="Resource_1gknh"]
+script = ExtResource("7_sjveu")
+weight = 1.0
+scene = ExtResource("8_4fk73")
+metadata/_custom_type_script = "uid://bdus2i53gwxdn"
+
+[sub_resource type="Resource" id="Resource_rqqa2"]
+script = ExtResource("7_sjveu")
+weight = 0.5
+scene = ExtResource("9_jmnlq")
+metadata/_custom_type_script = "uid://bdus2i53gwxdn"
+
+[sub_resource type="Resource" id="Resource_vd6r7"]
+script = ExtResource("6_oaw5j")
+enemies = Array[ExtResource("7_sjveu")]([SubResource("Resource_1gknh"), SubResource("Resource_rqqa2")])
+duration = 30.0
+spawn_count = 50.0
+wait_time = 10.0
+metadata/_custom_type_script = "uid://dlh8s7afts2qs"
+
+[sub_resource type="Resource" id="Resource_t2qul"]
+script = ExtResource("7_sjveu")
+weight = 1.0
+scene = ExtResource("8_4fk73")
+metadata/_custom_type_script = "uid://bdus2i53gwxdn"
+
+[sub_resource type="Resource" id="Resource_gjsig"]
+script = ExtResource("7_sjveu")
+weight = 1.0
+scene = ExtResource("9_jmnlq")
+metadata/_custom_type_script = "uid://bdus2i53gwxdn"
+
+[sub_resource type="Resource" id="Resource_quk5f"]
+script = ExtResource("7_sjveu")
+weight = 1.0
+scene = ExtResource("10_nsv1c")
+metadata/_custom_type_script = "uid://bdus2i53gwxdn"
+
+[sub_resource type="Resource" id="Resource_7o0oj"]
+script = ExtResource("6_oaw5j")
+enemies = Array[ExtResource("7_sjveu")]([SubResource("Resource_t2qul"), SubResource("Resource_gjsig"), SubResource("Resource_quk5f")])
+duration = 45.0
+spawn_count = 50.0
+wait_time = 20.0
+metadata/_custom_type_script = "uid://dlh8s7afts2qs"
 
 [node name="InnerWorld" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_ma31t")
@@ -84,11 +155,12 @@ shape = SubResource("WorldBoundaryShape2D_ma31t")
 position = Vector2(220, 0)
 shape = SubResource("WorldBoundaryShape2D_vhekp")
 
-[node name="Worm" parent="." instance=ExtResource("5_ma31t")]
-position = Vector2(-81, -119)
+[node name="EnemySpawner" type="Path2D" parent="."]
+curve = SubResource("Curve2D_vlgln")
+script = ExtResource("6_vhekp")
+waves = Array[ExtResource("6_oaw5j")]([SubResource("Resource_ny6tk"), SubResource("Resource_vd6r7"), SubResource("Resource_7o0oj")])
 
-[node name="Worm2" parent="." instance=ExtResource("5_ma31t")]
-position = Vector2(146, -90)
+[node name="PickupSpawnTimer" type="Timer" parent="."]
+unique_name_in_owner = true
 
-[node name="Worm3" parent="." instance=ExtResource("5_ma31t")]
-position = Vector2(-65, 88)
+[connection signal="timeout" from="PickupSpawnTimer" to="." method="_on_pickup_spawn_timer_timeout"]
