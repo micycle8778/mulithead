@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7bqonr751mfh"]
+[gd_scene load_steps=8 format=3 uid="uid://c7bqonr751mfh"]
 
+[ext_resource type="Script" uid="uid://das3xb8e03g3c" path="res://game.gd" id="1_7jktm"]
 [ext_resource type="PackedScene" uid="uid://b8r7vo1doj48k" path="res://world/world.tscn" id="1_80nbo"]
+[ext_resource type="Texture2D" uid="uid://ch0tjiqy2ujm3" path="res://hud/weapons/basic.png" id="2_feb5d"]
+[ext_resource type="FontFile" uid="uid://m2wgvqpaaq4w" path="res://hud/Tiny5-Regular.ttf" id="4_ryrav"]
+[ext_resource type="Texture2D" uid="uid://dtaerf4l2dkly" path="res://hud/health.png" id="5_eow3j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jktm"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ryrav"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_7jktm")
 
 [node name="World" parent="." instance=ExtResource("1_80nbo")]
 
@@ -13,3 +23,71 @@ offset_bottom = 180.0
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(160, 0, 160, 184)
+width = 5.0
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="HUD"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = -33.0
+offset_right = 44.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7jktm")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="HUD/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ryrav")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/PanelContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="HUD/PanelContainer/MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_feb5d")
+stretch_mode = 3
+
+[node name="AmmoLabel" type="Label" parent="HUD/PanelContainer/MarginContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ryrav")
+text = "033"
+
+[node name="Control" type="Control" parent="HUD/PanelContainer/MarginContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+
+[node name="Line" type="ColorRect" parent="HUD/PanelContainer/MarginContainer/PanelContainer/HBoxContainer/Control"]
+visible = false
+layout_mode = 1
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = 21.0
+
+[node name="TextureRect2" type="TextureRect" parent="HUD/PanelContainer/MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_eow3j")
+stretch_mode = 3
+
+[node name="Control2" type="Control" parent="HUD/PanelContainer/MarginContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+
+[node name="HealthLabel" type="Label" parent="HUD/PanelContainer/MarginContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ryrav")
+text = "33"

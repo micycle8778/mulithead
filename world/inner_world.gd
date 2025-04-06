@@ -9,6 +9,9 @@ static func get_instance(node: Node) -> World:
 	
 	return null
 
+static func has_prio(node: Node) -> bool:
+	return get_instance(node) == instances[-1]
+
 @export var player: Player
 
 func _init() -> void:
