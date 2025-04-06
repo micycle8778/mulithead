@@ -15,10 +15,10 @@
 shader = ExtResource("1_idfuc")
 shader_parameter/size = 28.0
 
-[sub_resource type="Gradient" id="Gradient_6xmxd"]
+[sub_resource type="Gradient" id="Gradient_oaw5j"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tcf2h"]
-gradient = SubResource("Gradient_6xmxd")
+gradient = SubResource("Gradient_oaw5j")
 width = 448
 height = 448
 

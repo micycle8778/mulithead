@@ -62,7 +62,9 @@ func should_dodge() -> bool:
 	dodge_clock = dodge_cooldown
 	target_bullet = bullet_detector.get_overlapping_bodies()[0]
 
-	var v = target_bullet.dir.rotated(PI / 2)
+	var dir = target_bullet.dir if "dir" in target_bullet \
+			else target_bullet.global_position.direction_to(global_position)
+	var v = dir.rotated(PI / 2)
 	if v.dot(velocity) < 0:
 		dodge_direction = v
 	else:
