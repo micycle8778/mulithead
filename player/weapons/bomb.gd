@@ -1,10 +1,10 @@
 extends Node2D
 
-const fire_wait := 1.
+const fire_wait := .5
 var clock := 0.
 
 func equipped() -> void:
-	Game.instance.ammo = 20
+	Game.instance.ammo = 40
 	Game.instance.ammo_icon.texture = PL.bomb_weapon_texture
 
 func fire_released(_delta: float) -> void:

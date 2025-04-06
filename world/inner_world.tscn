@@ -130,7 +130,7 @@ offset_left = -192.0
 offset_top = -192.0
 offset_right = 192.0
 offset_bottom = 192.0
-color = Color(1, 1, 1, 0.266667)
+color = Color(0.54, 0.54, 0.54, 0.266667)
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(-192, -192, 192, -192, 192, 192, -192, 192, -192, -192)

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const initial_speed := 200.
-var clock := 1.
+var clock := .65
 var dir: Vector2
 
 func _ready() -> void:

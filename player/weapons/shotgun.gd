@@ -4,7 +4,7 @@ const fire_wait := 0.1
 var clock := 0.
 
 func equipped() -> void:
-	Game.instance.ammo = 50
+	Game.instance.ammo = 150
 	Game.instance.ammo_icon.texture = PL.shotgun_weapon_texture
 
 func fire_released(_delta: float) -> void:
