@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://btt72eflld1co"]
+
+[ext_resource type="Script" uid="uid://rv0weftvly6o" path="res://enemy/worm/worm.gd" id="1_cqgiy"]
+[ext_resource type="PackedScene" uid="uid://d01n2g40t77ar" path="res://enemy/worm/worm_segment.tscn" id="2_fno5f"]
+
+[node name="Worm" type="Node2D"]
+script = ExtResource("1_cqgiy")
+
+[node name="WormSegment" parent="." instance=ExtResource("2_fno5f")]
+position = Vector2(-49, 0)
+
+[node name="WormSegment2" parent="." instance=ExtResource("2_fno5f")]
+position = Vector2(-42, 0)
+
+[node name="WormSegment3" parent="." instance=ExtResource("2_fno5f")]
+position = Vector2(-35, 0)
+
+[node name="WormSegment4" parent="." instance=ExtResource("2_fno5f")]
+position = Vector2(-28, 0)
+
+[node name="WormSegment5" parent="." instance=ExtResource("2_fno5f")]
+position = Vector2(-21, 0)
+
+[node name="WormSegment6" parent="." instance=ExtResource("2_fno5f")]
+position = Vector2(-14, 0)
+
+[node name="WormSegment7" parent="." instance=ExtResource("2_fno5f")]
+position = Vector2(-7, 0)
+
+[node name="WormSegment8" parent="." instance=ExtResource("2_fno5f")]
+
+[node name="WormSegment9" parent="." instance=ExtResource("2_fno5f")]
+
+[node name="WormSegment10" parent="." instance=ExtResource("2_fno5f")]
+
+[node name="WormSegment11" parent="." instance=ExtResource("2_fno5f")]
+
+[node name="WormSegment12" parent="." instance=ExtResource("2_fno5f")]
+
+[node name="WormSegment13" parent="." instance=ExtResource("2_fno5f")]

@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://d01n2g40t77ar"]
+
+[ext_resource type="Script" uid="uid://bfx7gghhmd242" path="res://enemy/worm/worm_segment.gd" id="1_lp2a4"]
+[ext_resource type="PackedScene" uid="uid://d4iu0k0kb34ao" path="res://enemy/util/death_particles.tscn" id="2_e64al"]
+[ext_resource type="PackedScene" uid="uid://bu8j5odwugj3n" path="res://enemy/util/hurt_box.tscn" id="3_36u6t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5xx7f"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_emnjf"]
+radius = 9.0
+
+[node name="WormSegment" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_lp2a4")
+
+[node name="HeadVisual" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Polygon2D" type="Polygon2D" parent="HeadVisual"]
+color = Color(0.742323, 0.445948, 1.92523e-07, 1)
+polygon = PackedVector2Array(-3, -6, -3, 6, 3, 6, 6, 0, 3, -6)
+
+[node name="Line2D" type="Line2D" parent="HeadVisual"]
+points = PackedVector2Array(-3, -6, -3, 6, 3, 6, 6, 0, 3, -6, -3, -6)
+width = 1.5
+default_color = Color(1, 0.584314, 0, 1)
+begin_cap_mode = 1
+
+[node name="BodyVisual" type="Node2D" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="Polygon2D" type="Polygon2D" parent="BodyVisual"]
+color = Color(0.742323, 0.445948, 1.92523e-07, 1)
+polygon = PackedVector2Array(-3, -6, -3, 6, 3, 6, 3, -6)
+
+[node name="Line2D" type="Line2D" parent="BodyVisual"]
+points = PackedVector2Array(-3, -6, -3, 6, 3, 6, 3, -6, -3, -6)
+width = 1.5
+default_color = Color(1, 0.584314, 0, 1)
+begin_cap_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_5xx7f")
+
+[node name="DeathParticles" parent="." instance=ExtResource("2_e64al")]
+unique_name_in_owner = true
+rotation = -3.14159
+color = Color(1, 0.483333, 0, 1)
+
+[node name="HurtBox" parent="." instance=ExtResource("3_36u6t")]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_emnjf")
+debug_color = Color(0.994851, 0, 0.215299, 0.42)
+
+[connection signal="hit" from="HurtBox" to="." method="_on_hurt_box_hit"]

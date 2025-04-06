@@ -3,6 +3,9 @@ extends CharacterBody2D
 const speed := 300.
 var dir: Vector2
 
+func hit_enemy():
+	queue_free()
+
 func _ready() -> void:
 	velocity = dir * speed
 

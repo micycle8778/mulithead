@@ -8,3 +8,4 @@ func _on_body_entered(body: Node2D):
 		else body.global_position.direction_to(global_position)
 	
 	hit.emit(dir)
+	if body.has_method("hit_enemy"): body.hit_enemy()
