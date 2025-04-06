@@ -2,6 +2,7 @@ class_name Game extends Node2D
 
 static var instance: Game
 
+@onready var ammo_icon: TextureRect = %AmmoIcon
 @onready var ammo_label: Label = %AmmoLabel
 @onready var health_label: Label = %HealthLabel
 

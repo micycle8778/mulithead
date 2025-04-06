@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://sodn8qieyol"]
+[gd_scene load_steps=7 format=3 uid="uid://sodn8qieyol"]
 
 [ext_resource type="Script" uid="uid://dg15tf8evg8ba" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://25k8mcij1du1" path="res://player/player.png" id="2_rkbax"]
 [ext_resource type="Script" uid="uid://c185euuhtf7he" path="res://player/weapons/basic.gd" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://5beatglyxkrw" path="res://player/weapons/shotgun.gd" id="4_yw30f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rkbax"]
 radius = 7.0
@@ -41,5 +42,8 @@ unique_name_in_owner = true
 
 [node name="Basic" type="Node2D" parent="Weapons"]
 script = ExtResource("3_g1dw6")
+
+[node name="Shotgun" type="Node2D" parent="Weapons"]
+script = ExtResource("4_yw30f")
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

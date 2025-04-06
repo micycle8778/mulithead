@@ -55,7 +55,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ryrav")
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="TextureRect" type="TextureRect" parent="HUD/PanelContainer/MarginContainer/PanelContainer/HBoxContainer"]
+[node name="AmmoIcon" type="TextureRect" parent="HUD/PanelContainer/MarginContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("2_feb5d")
 stretch_mode = 3
