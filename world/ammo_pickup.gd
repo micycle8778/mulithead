@@ -22,8 +22,8 @@ const weapon_to_texture: Dictionary[StringName, Texture2D] = {
 func _ready() -> void:
 	count += 1
 
-	if count > 3:
-		queue_free()
+	# if count > 3:
+	# 	queue_free()
 
 	ammo_icon.texture = weapon_to_texture[contained_weapon]
 

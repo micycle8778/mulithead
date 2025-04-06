@@ -48,7 +48,13 @@ func _physics_process(delta: float) -> void:
 	rotation = v.angle()
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:
-	# TODO: detect player death
-	Game.instance.health -= 3
 	MainCam.shake(.4)
 	body.queue_free()
+
+	Game.instance.health = move_toward(Game.instance.health, 0, 3)
+
+	if Game.instance.health <= 0:
+		var img := get_tree().current_scene.get_viewport().get_texture().get_image()
+		DeathScreen.screenshot = ImageTexture.create_from_image(img)
+		get_tree().change_scene_to_file("res://uis/death_screen.tscn")
+

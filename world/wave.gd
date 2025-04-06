@@ -27,5 +27,6 @@ func execute(spawner: EnemySpawner) -> void:
 		spawner.add_sibling(enemy)
 
 		await PL.get_tree().create_timer(duration / spawn_count, false).timeout
+		if not is_instance_valid(spawner): return
 
 	await PL.get_tree().create_timer(wait_time, false).timeout

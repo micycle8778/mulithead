@@ -1,0 +1,50 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dtbw0xfnglvcy"]
+
+[ext_resource type="FontFile" uid="uid://m2wgvqpaaq4w" path="res://hud/Tiny5-Regular.ttf" id="1_m1t53"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nx4vr"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0, 0, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 1.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1t53"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 1.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_py371"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0, 0, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 1.0
+expand_margin_bottom = 3.0
+
+[resource]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_focus_color = Color(1, 0, 0, 1)
+Button/colors/font_hover_color = Color(1, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/fonts/font = ExtResource("1_m1t53")
+Button/styles/focus = SubResource("StyleBoxFlat_nx4vr")
+Button/styles/hover = SubResource("StyleBoxFlat_nx4vr")
+Button/styles/normal = SubResource("StyleBoxFlat_m1t53")
+Button/styles/pressed = SubResource("StyleBoxFlat_py371")
