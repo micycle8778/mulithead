@@ -1,0 +1,156 @@
+[gd_scene load_steps=9 format=3 uid="uid://b1mekudmgs7py"]
+
+[ext_resource type="Script" uid="uid://b3k7egc115qcj" path="res://player/bullets/hyperbeam.gd" id="1_mn0nx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kwvnb"]
+size = Vector2(795, 10)
+
+[sub_resource type="Animation" id="Animation_pncln"]
+resource_name = "decay"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(4.28709, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:collision_layer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0, 1),
+"update": 1,
+"values": [8, 0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.833333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_w23l4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:collision_layer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7crqy"]
+_data = {
+&"RESET": SubResource("Animation_w23l4"),
+&"decay": SubResource("Animation_pncln")
+}
+
+[sub_resource type="Gradient" id="Gradient_mn0nx"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pncln"]
+gradient = SubResource("Gradient_mn0nx")
+width = 8
+height = 8
+
+[sub_resource type="Gradient" id="Gradient_w23l4"]
+offsets = PackedFloat32Array(0.391459, 0.644128)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Hyperbeam" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_mn0nx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = -5.0
+offset_right = 795.0
+offset_bottom = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(397.5, 0)
+shape = SubResource("RectangleShape2D_kwvnb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7crqy")
+}
+autoplay = "decay"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(397, 0)
+emitting = false
+amount = 128
+texture = SubResource("GradientTexture2D_pncln")
+one_shot = true
+preprocess = 0.1
+explosiveness = 1.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(397.5, 1)
+spread = 90.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 115.85
+initial_velocity_max = 115.85
+angular_velocity_min = 421.46
+angular_velocity_max = 421.46
+angle_min = -720.0
+color_ramp = SubResource("Gradient_w23l4")

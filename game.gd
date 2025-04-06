@@ -6,11 +6,11 @@ static var instance: Game
 @onready var ammo_label: Label = %AmmoLabel
 @onready var health_label: Label = %HealthLabel
 
-var ammo := 100:
+var ammo := 100.:
 	set(v):
 		ammo = v
 		_update_labels()
-var health := 50:
+var health := 50.:
 	set(v):
 		health = v
 		_update_labels()

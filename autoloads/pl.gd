@@ -1,6 +1,7 @@
 extends Node
 
 const basic_bullet = preload("res://player/bullets/basic_bullet.tscn")
+const hyperbeam_bullet = preload("res://player/bullets/hyperbeam.tscn")
 const bomb = preload("res://player/bullets/bomb.tscn")
 
 const explosion = preload("res://player/bullets/explosion.tscn")

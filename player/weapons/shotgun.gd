@@ -7,10 +7,10 @@ func equipped() -> void:
 	Game.instance.ammo = 50
 	Game.instance.ammo_icon.texture = PL.shotgun_weapon_texture
 
-func fire_released() -> void:
+func fire_released(_delta: float) -> void:
 	return
 
-func fire_pressed(parent: Node, dir: Vector2) -> void:
+func fire_pressed(_delta: float, parent: Node, dir: Vector2) -> void:
 	print("fire_pressed")
 	if clock > 0.: return
 	if Game.instance.ammo <= 0: return
