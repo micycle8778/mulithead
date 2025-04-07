@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://4vq4yhrnsdfg"]
+[gd_scene load_steps=16 format=3 uid="uid://4vq4yhrnsdfg"]
 
 [ext_resource type="FontFile" uid="uid://m2wgvqpaaq4w" path="res://hud/Tiny5-Regular.ttf" id="1_3u0yq"]
 [ext_resource type="Theme" uid="uid://dtbw0xfnglvcy" path="res://uis/buttons.tres" id="1_h2alk"]
 [ext_resource type="Shader" uid="uid://rr8u5n104mcf" path="res://world/stars.gdshader" id="2_2x33o"]
+[ext_resource type="Script" uid="uid://cf5d7tun36vdt" path="res://uis/title.gd" id="2_h30w1"]
 [ext_resource type="Script" uid="uid://bs1ban3n7lv66" path="res://uis/background.gd" id="3_03oqp"]
 [ext_resource type="Texture2D" uid="uid://b5kkv3qrefnxe" path="res://logo.png" id="3_nx4vr"]
 [ext_resource type="Script" uid="uid://bg1u58khydql1" path="res://uis/button.gd" id="5_03oqp"]
@@ -11,10 +12,10 @@
 shader = ExtResource("2_2x33o")
 shader_parameter/size = 28.0
 
-[sub_resource type="Gradient" id="Gradient_6xmxd"]
+[sub_resource type="Gradient" id="Gradient_h2alk"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_h2alk"]
-gradient = SubResource("Gradient_6xmxd")
+gradient = SubResource("Gradient_h2alk")
 width = 448
 height = 448
 
@@ -111,6 +112,20 @@ tracks/2/keys = {
 "method": &"grab_focus"
 }]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(11.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_anim_end"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h2alk"]
 _data = {
@@ -118,7 +133,7 @@ _data = {
 &"open": SubResource("Animation_nx4vr")
 }
 
-[node name="Control" type="Control"]
+[node name="TitleScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -126,6 +141,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_h2alk")
+script = ExtResource("2_h30w1")
 
 [node name="MarginContainer2" type="Control" parent="."]
 layout_mode = 1

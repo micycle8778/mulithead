@@ -1,80 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsbmlfvng4yvd"]
+[gd_scene load_steps=6 format=3 uid="uid://dsbmlfvng4yvd"]
 
-[ext_resource type="PackedScene" uid="uid://b12wblksq54so" path="res://enemy/spinner.tscn" id="1_dxppu"]
+[ext_resource type="Shader" uid="uid://rr8u5n104mcf" path="res://world/stars.gdshader" id="1_gy3sr"]
+[ext_resource type="Script" uid="uid://bs1ban3n7lv66" path="res://uis/background.gd" id="2_1lwx6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t34gm"]
-size = Vector2(8, 8)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dsnr4"]
+shader = ExtResource("1_gy3sr")
+shader_parameter/size = 28.0
+
+[sub_resource type="Gradient" id="Gradient_6xmxd"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lf0gk"]
+gradient = SubResource("Gradient_6xmxd")
+width = 448
+height = 448
 
 [node name="TestWorld" type="Node2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(64, 56)
-scale = Vector2(1, 12)
-
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
-offset_right = 8.0
-offset_bottom = 8.0
-color = Color(0.0768358, 0.0768358, 0.0768358, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(4, 4)
-shape = SubResource("RectangleShape2D_t34gm")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(240, 56)
-scale = Vector2(1, 12)
-
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D2"]
-offset_right = 8.0
-offset_bottom = 8.0
-color = Color(0.0768358, 0.0768358, 0.0768358, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(4, 4)
-shape = SubResource("RectangleShape2D_t34gm")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2(64, 56)
-rotation = -1.5708
-scale = Vector2(1.08208, 23.0452)
-
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D3"]
-offset_right = 8.0
-offset_bottom = 8.0
-color = Color(0.0768358, 0.0768358, 0.0768358, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2(4, 4)
-shape = SubResource("RectangleShape2D_t34gm")
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="."]
-position = Vector2(64, 160)
-rotation = -1.5708
-scale = Vector2(1.08208, 23.0452)
-
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D4"]
-offset_right = 8.0
-offset_bottom = 8.0
-color = Color(0.0768358, 0.0768358, 0.0768358, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
-position = Vector2(4, 4)
-shape = SubResource("RectangleShape2D_t34gm")
-
-[node name="Spinner" parent="." instance=ExtResource("1_dxppu")]
-position = Vector2(176, 120)
-
-[node name="Spinner2" parent="." instance=ExtResource("1_dxppu")]
-position = Vector2(200, 104)
-
-[node name="Spinner3" parent="." instance=ExtResource("1_dxppu")]
-position = Vector2(112, 104)
-
-[node name="Spinner4" parent="." instance=ExtResource("1_dxppu")]
-position = Vector2(136, 128)
-
-[node name="Spinner5" parent="." instance=ExtResource("1_dxppu")]
-position = Vector2(152, 88)
-
-[node name="Spinner6" parent="." instance=ExtResource("1_dxppu")]
-position = Vector2(216, 128)
+[node name="Background" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_dsnr4")
+position = Vector2(160, 90)
+texture = SubResource("GradientTexture2D_lf0gk")
+region_enabled = true
+region_rect = Rect2(0, 0, 320, 180)
+script = ExtResource("2_1lwx6")

@@ -23,4 +23,5 @@ func _update_labels() -> void:
 	health_label.text = "%02d" % health
 
 func _ready() -> void:
+	DJMusicMan.play_full()
 	_update_labels()

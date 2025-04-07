@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://drsqdj8jrskqm"]
+
+[ext_resource type="Script" uid="uid://dhcbj07gxg3af" path="res://dj_music_man/d_j_music_man.gd" id="1_mr7vg"]
+[ext_resource type="AudioStream" uid="uid://dw23mjoedgtxx" path="res://dj_music_man/multihead.ogg" id="2_wgjqh"]
+[ext_resource type="AudioStream" uid="uid://cyin5naula4id" path="res://dj_music_man/multihead-full.ogg" id="3_kugdp"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_kugdp"]
+clip_count = 2
+clip_0/name = &"start"
+clip_0/stream = ExtResource("2_wgjqh")
+clip_0/auto_advance = 0
+clip_1/name = &"full"
+clip_1/stream = ExtResource("3_kugdp")
+clip_1/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 0.0,
+"fade_mode": 0,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(0, -1): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"from_time": 3,
+"to_time": 0
+}
+}
+
+[node name="DJMusicMan" type="Node"]
+script = ExtResource("1_mr7vg")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamInteractive_kugdp")
+bus = &"Music"
