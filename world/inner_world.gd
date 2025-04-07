@@ -13,6 +13,7 @@ static func has_prio(node: Node) -> bool:
 	return get_instance(node) == instances[-1]
 
 @export var player: Player
+@export var main_cam: MainCam
 
 func _init() -> void:
 	instances = instances.filter(is_instance_valid)

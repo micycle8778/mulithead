@@ -11,7 +11,7 @@ func _ready() -> void:
 	var explosion = PL.explosion.instantiate()
 	explosion.position = position
 	add_sibling(explosion)
-	MainCam.shake(.1)
+	World.get_instance(self).main_cam.shake(.1)
 	queue_free()
 
 func _physics_process(_delta: float) -> void:

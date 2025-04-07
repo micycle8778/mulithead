@@ -17,6 +17,10 @@ func equipped() -> void:
 	Game.instance.ammo = 175
 	Game.instance.ammo_icon.texture = PL.hyperbeam_weapon_texture
 
+func unequipped() -> void:
+	charge = 0
+	_update_player_speed()
+
 func _update_player_speed() -> void:
 	World.get_instance(self).player.speed_mul = speed_curve.sample(clock)
 
@@ -45,7 +49,7 @@ func fire_pressed(delta: float, parent: Node, dir: Vector2) -> void:
 	charge = 0.
 	has_fired = true
 
-	MainCam.shake(.1)
+	World.get_instance(self).main_cam.shake(.1)
 
 	var bullet := PL.hyperbeam_bullet.instantiate()
 	bullet.dir = dir

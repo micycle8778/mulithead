@@ -83,5 +83,6 @@ func _physics_process(delta: float) -> void:
 			_process_rest(delta)
 
 func _on_hurt_box_hit(dir: Vector2) -> void:
+	Game.instance.score += 3
 	death_particles.emit(get_parent(), dir)
 	queue_free()

@@ -27,5 +27,6 @@ func _body_process(_delta: float, prev_segment: WormSegment) -> void:
 	global_position = prev_segment.global_position + v
 
 func _on_hurt_box_hit(dir: Vector2) -> void:
+	Game.instance.score += 3
 	death_particles.emit(get_parent(), dir)
 	queue_free()

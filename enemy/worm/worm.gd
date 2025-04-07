@@ -9,6 +9,7 @@ func _process(delta: float) -> void:
 	var segments := get_segments()
 
 	if get_segments().is_empty():
+		Game.instance.score += 5
 		queue_free()
 
 	var is_head := true

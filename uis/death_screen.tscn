@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cd0a750nlin0s"]
+[gd_scene load_steps=11 format=3 uid="uid://cd0a750nlin0s"]
 
 [ext_resource type="Theme" uid="uid://dtbw0xfnglvcy" path="res://uis/buttons.tres" id="1_700xt"]
 [ext_resource type="Script" uid="uid://brm80cdrgprxr" path="res://uis/death_screen.gd" id="1_ccyno"]
 [ext_resource type="FontFile" uid="uid://m2wgvqpaaq4w" path="res://hud/Tiny5-Regular.ttf" id="1_s1vvq"]
 [ext_resource type="Shader" uid="uid://bg8botrtea3rl" path="res://uis/death_screen.gdshader" id="3_iuxor"]
 [ext_resource type="Texture2D" uid="uid://dpxdgg0ibl5tt" path="res://sample-screenshot.png" id="4_700xt"]
+[ext_resource type="Script" uid="uid://e5csqkgg035" path="res://uis/score_label.gd" id="4_hkoln"]
 
 [sub_resource type="Animation" id="Animation_cfynx"]
 length = 0.001
@@ -176,6 +177,16 @@ offset_bottom = 44.0
 scale = Vector2(1.80272, 1.80272)
 theme_override_fonts/font = ExtResource("1_s1vvq")
 text = "CONNECTION LOST"
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 54.0
+offset_right = 148.0
+offset_bottom = 77.0
+theme_override_fonts/font = ExtResource("1_s1vvq")
+text = "SCORE: %d"
+script = ExtResource("4_hkoln")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

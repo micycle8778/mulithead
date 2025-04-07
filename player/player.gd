@@ -12,6 +12,10 @@ var _weapon_node: Node
 	set(v):
 		current_weapon = v
 		if (not is_node_ready()): return
+
+		if _weapon_node != null and _weapon_node.has_method("unequipped"):
+			_weapon_node.unequipped()
+
 		_weapon_node = %Weapons.get_node_or_null(v)
 		_weapon_node.equipped()
 
@@ -48,7 +52,7 @@ func _physics_process(delta: float) -> void:
 	rotation = v.angle()
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:
-	MainCam.shake(.4)
+	World.get_instance(self).main_cam.shake(.4, 2)
 	body.queue_free()
 
 	Game.instance.health = move_toward(Game.instance.health, 0, 3)
