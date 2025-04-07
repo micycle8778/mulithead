@@ -25,3 +25,9 @@ func _update_labels() -> void:
 func _ready() -> void:
 	DJMusicMan.play_full()
 	_update_labels()
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("suicide") and OS.has_feature("editor"):
+		var img := get_tree().current_scene.get_viewport().get_texture().get_image()
+		DeathScreen.screenshot = ImageTexture.create_from_image(img)
+		get_tree().change_scene_to_file("res://uis/death_screen.tscn")

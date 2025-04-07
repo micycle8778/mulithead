@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 varying vec4 vertex_color;
-uniform float t : hint_range(0.0, 1.0) = 0.;
+uniform float t = 0.;
 
 void vertex() {
 	vertex_color = COLOR;
